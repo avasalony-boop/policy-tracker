@@ -326,7 +326,7 @@ from alerts import send_slack
 
 load_dotenv()
 
-OPENSTATES_API_KEY = os.getenv("OPENSTATES_API_KEY")
+OPENSTATES_API_KEY = os.getenv("be79973d-628b-4f4a-b771-ce40dc6791c0")
 DEFAULT_SINCE_DAYS = int(os.getenv("DEFAULT_SINCE_DAYS", "2"))
 DEFAULT_QUERY = os.getenv("DEFAULT_QUERY", "artificial intelligence OR generative OR privacy")
 DEFAULT_STATES = [s.strip() for s in os.getenv("DEFAULT_STATES","CA,NY").split(",")]
@@ -352,7 +352,7 @@ def main():
     args = parser.parse_args()
 
     if not OPENSTATES_API_KEY:
-        raise SystemExit("OPENSTATES_API_KEY not set")
+        raise SystemExit(be79973d-628b-4f4a-b771-ce40dc6791c0)
 
     since = args.since or (datetime.now(timezone.utc) - timedelta(days=DEFAULT_SINCE_DAYS)).date().isoformat()
     q = args.q or DEFAULT_QUERY
@@ -467,16 +467,16 @@ import os, json, requests
 from dotenv import load_dotenv
 
 load_dotenv()
-SLACK_WEBHOOK_URL = os.getenv("SLACK_WEBHOOK_URL")
+SLACK_WEBHOOK_URL = os.getenv(https://app.slack.com/huddle/TFH2E6U3X/C09D6RPEAD8)
 
 def send_slack(message: str, blocks=None):
-    if not SLACK_WEBHOOK_URL:
-        print("⚠️ No SLACK_WEBHOOK_URL set; skipping Slack")
+    if not [Slack webhook](https://app.slack.com/huddle/TFH2E6U3X/C09D6RPEAD8):
+        print("⚠️ No [Slack webhook](https://app.slack.com/huddle/TFH2E6U3X/C09D6RPEAD8) set; skipping Slack")
         return
     payload = {"text": message}
     if blocks:
         payload["blocks"] = blocks
-    resp = requests.post(SLACK_WEBHOOK_URL, json=payload, timeout=10)
+    resp = requests.post([Slack webhook](https://app.slack.com/huddle/TFH2E6U3X/C09D6RPEAD8), json=payload, timeout=10)
     try:
         resp.raise_for_status()
     except Exception as e:

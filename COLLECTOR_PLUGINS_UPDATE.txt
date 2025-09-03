@@ -1,0 +1,35 @@
+# (Note) Update to collector_plugins.py:
+#
+# After importing RSS/OpenStates plugins, add:
+#
+#   from http_keyword import HTTPKeywordPlugin
+#
+# Then load sources.yml and run it:
+#
+#   def load_sources_config(path="sources.yml"):
+#       import yaml, os
+#       if not os.path.exists(path): return []
+#       with open(path, "r", encoding="utf-8") as f:
+#           return yaml.safe_load(f) or []
+#
+#   if not args.no_http:
+#       sources = load_sources_config(args.sources)
+#       http = HTTPKeywordPlugin(sources)
+#       http_count = 0
+#       for item in http.fetch():
+#           http_count += 1
+#           title = item.get("title","")
+#           url = item.get("url","")
+#           topic = item.get("topic_labels","")
+#           msg = f"🌐 *{title}*\n{url}"
+#           if topic:
+#               msg = f"[{topic}] " + msg
+#           if not DRY_RUN:
+#               send_slack(msg, blocks=[{"type":"section","text":{"type":"mrkdwn","text":msg}}])
+#       print(f"HTTP items processed: {http_count}")
+#
+# And extend argparse with:
+#   parser.add_argument("--no-http", action="store_true", help="Skip HTTP keyword sources")
+#   parser.add_argument("--sources", default="sources.yml", help="Path to sources.yml")
+#
+# Save the http_keyword.py file under `plugins/` as shown in this patch.

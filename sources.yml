@@ -1,0 +1,53 @@
+# sources.yml — lightweight HTML keyword scanner sources
+#
+# Each entry:
+# - name: identifier
+# - url: the page to scan (list/news/search page)
+# - link_selector: CSS selector to pick result links (default: 'a')
+# - snippet_selector: optional selector for extra text to match against
+# - include: list of keywords that must appear in link/snippet (any matches)
+# - exclude: list of keywords to filter out
+# - topic: ai|privacy|housing|healthcare|telemarketing (tag for routing)
+# - state: 2-letter postal (optional)
+
+# Plural Policy (open). If they offer RSS/API later, prefer that.
+- name: Plural-Search-AI
+  url: https://open.pluralpolicy.com/search?q=artificial%20intelligence
+  link_selector: "a"
+  include: ["artificial intelligence","ai"]
+  topic: ai
+
+- name: Plural-Search-Privacy
+  url: https://open.pluralpolicy.com/search?q=privacy
+  link_selector: "a"
+  include: ["privacy","data"]
+  topic: privacy
+
+- name: Plural-Search-Telemarketing
+  url: https://open.pluralpolicy.com/search?q=telemarketing
+  link_selector: "a"
+  include: ["telemarketing","robocall","do not call"]
+  topic: telemarketing
+
+- name: Plural-Search-Housing
+  url: https://open.pluralpolicy.com/search?q=housing%20tenant%20screening
+  link_selector: "a"
+  include: ["housing","tenant","eviction","screening"]
+  topic: housing
+
+# Example state sites — replace with the list pages you want
+# CA Legislature Bill Search (example list page)
+- name: CA-Leg-Search-AI
+  state: CA
+  url: https://leginfo.legislature.ca.gov/faces/billSearchClient.xhtml
+  link_selector: "a"
+  include: ["artificial intelligence","algorithm","automated decision"]
+  topic: ai
+
+# NY Senate Newsroom (example; adjust selectors/URL to specific feeds or searches)
+- name: NY-Senate-News-Privacy
+  state: NY
+  url: https://www.nysenate.gov/newsroom
+  link_selector: "a.card--title, a.teaser__title, a"
+  include: ["privacy","data","biometric"]
+  topic: privacy

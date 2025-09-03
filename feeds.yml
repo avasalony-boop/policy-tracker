@@ -1,0 +1,42 @@
+# Add or remove RSS/Atom feeds here (free sources).
+# The RSS plugin will fetch items, normalize them into 'policy events',
+# and send Slack alerts (optionally) with the link and summary.
+#
+# You can start with a small set, then expand.
+# Format:
+# - name: short identifier
+#   state: 2-letter or full (optional)
+#   topic: ai|privacy|housing|healthcare (optional tags for routing)
+#   url: https://example.com/feed
+#   include: ["keyword1","keyword2"]    # optional: only include if one of these shows in title/summary
+#   exclude: ["exclude-word"]           # optional: skip if matches
+#   slack: true                         # optional: post to Slack immediately
+#
+# Examples:
+- name: NCSL-AI
+  topic: ai
+  url: https://www.ncsl.org/rss?search=artificial%20intelligence
+  include: ["artificial intelligence","AI"]
+  slack: true
+
+- name: IAPP-privacy
+  topic: privacy
+  url: https://iapp.org/news/rss/
+  include: ["privacy","data","children","biometric"]
+
+- name: HHS-OCR
+  topic: healthcare
+  url: https://www.hhs.gov/feeds/ocr.xml
+  include: ["HIPAA","health","privacy","security"]
+
+- name: HUD-News
+  topic: housing
+  url: https://www.hud.gov/press/press_releases/rss.xml
+  include: ["tenant","housing","voucher","fair housing","rent"]
+
+# Add state executive/legislature feeds (example placeholders—replace with real ones you want)
+- name: CA-Governor
+  state: CA
+  url: https://www.gov.ca.gov/feed/
+  include: ["signed","bill","executive order","order"]
+  slack: true

@@ -482,4 +482,7 @@ def send_slack(message: str, blocks=None):
     except Exception as e:
         print("Slack send failed:", e)
 
+sh 
 
+uvicorn serve: app -- reload
+exit()
